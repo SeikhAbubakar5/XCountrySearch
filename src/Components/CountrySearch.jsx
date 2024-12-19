@@ -3,21 +3,27 @@ import axios from "axios";
 import "./CountrySearch.css";
 
 function CountrySearch() {
-  const [country, setCountry] = useState([]); 
-  const [search, setSearch] = useState(""); 
-  const [filter, setFilter] = useState([]); 
-
+  const [country, setCountry] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState([]);
+  const [error, setError] = useState("");
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://restcountries.com/v3.1/all");
-      const countryData = await response.data.map((item) => ({
+      const response = await axios.get(`https://restcountries.com/v3.1/all`, {
+        headers: {
+          'Upgrade-Insecure-Requests': '1',
+          'Accept': 'application/json',
+        }
+      });
+      const countryData = response.data.map((item) => ({
         name: item.name.common,
         flag: item.flags.png,
       }));
       setCountry(countryData);
       setFilter(countryData);
     } catch (error) {
+      setError("Error fetching country data. Please try again later.");
       console.log("Error fetching data:", error);
     }
   };
@@ -38,6 +44,7 @@ function CountrySearch() {
 
   return (
     <div className="container">
+      {error && <div className="error-message">{error}</div>}
       <div className="search">
         <input
           type="text"
@@ -48,12 +55,16 @@ function CountrySearch() {
       </div>
 
       <div className="Country">
-        {filter.map((elem) => (
-          <div className="countryCard" key={elem.name}>
-            <img src={elem.flag} alt={elem.name} />
-            <p>{elem.name}</p>
-          </div>
-        ))}
+        {filter.length > 0 ? (
+          filter.map((elem) => (
+            <div className="countryCard" key={elem.name}>
+              <img src={elem.flag} alt={elem.name} />
+              <p>{elem.name}</p>
+            </div>
+          ))
+        ) : (
+          <p>No countries found</p>
+        )}
       </div>
     </div>
   );

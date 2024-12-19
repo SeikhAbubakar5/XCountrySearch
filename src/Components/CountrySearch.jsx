@@ -55,16 +55,14 @@ function CountrySearch() {
       </div>
 
       <div className="Country">
-        {filter.length > 0 ? (
-          filter.map((elem) => (
+        
+          {filter.map((elem) => (
             <div className="countryCard" key={elem.name}>
               <img src={elem.flag} alt={elem.name} />
               <p>{elem.name}</p>
             </div>
           ))
-        ) : (
-          <p>No countries found</p>
-        )}
+}
       </div>
     </div>
   );

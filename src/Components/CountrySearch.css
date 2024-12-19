@@ -1,37 +1,44 @@
-.Country{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 20px;
-    overflow-x: hidden;
+.Country {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
 }
-.countryCard{
-    width:180px;
-    height:150px ;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-.countryCard img{
-    width:120px;
-    height: 80px;
-    margin-top: 10px;
-    object-fit: cover;
-  }
-  .countryCard p{
-    text-align: center;
-  }
-  .search{
-    margin-top: 30px;
-  }
-  .search input{
-    width: 60%;
-    height: 30px;
-    border: 1px solid rgb(107, 99, 99);
-    outline: none;
-    box-shadow: 5px 5px 8px gray;
-  }
-  .search input :focus{
-    border: none;
 
-  }
+.countryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 150px;
+}
+
+.countryCard img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.countryCard p {
+  text-align: center;
+}
+
+.search {
+  margin-top: 30px;
+}
+
+.search input {
+  width: 60%;
+  height: 30px;
+  border: 1px solid rgb(107, 99, 99);
+  outline: none;
+  box-shadow: 5px 5px 8px gray;
+}
+
+.search input :focus {
+  border: none;
+
+}

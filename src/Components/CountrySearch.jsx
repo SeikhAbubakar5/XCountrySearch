@@ -18,7 +18,7 @@ function CountrySearch() {
       setCountry(countryData);
       setFilter(countryData);
     } catch (error) {
-      console.log("Error fetching data:", error.message);
+      console.log("Error fetching data:", error);
     }
   };
 
@@ -41,15 +41,15 @@ function CountrySearch() {
       <div className="search">
         <input
           type="text"
-          placeholder="Search for countries"
+          placeholder="Search for countries..."
           value={search}
           onChange={handleSearch}
         />
       </div>
 
       <div className="Country">
-        {filter.map((elem, index) => (
-          <div className="countryCard" key={index}>
+        {filter.map((elem) => (
+          <div className="countryCard" key={elem.name}>
             <img src={elem.flag} alt={elem.name} />
             <p>{elem.name}</p>
           </div>

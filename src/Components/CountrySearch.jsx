@@ -11,7 +11,7 @@ function CountrySearch() {
   const fetchData = async () => {
     try {
       const response = await axios.get("https://restcountries.com/v3.1/all");
-      const countryData = response.data.map((item) => ({
+      const countryData = await response.data.map((item) => ({
         name: item.name.common,
         flag: item.flags.png,
       }));
